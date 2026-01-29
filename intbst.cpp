@@ -9,17 +9,21 @@ using std::cout;
 
 // constructor sets up empty tree
 IntBST::IntBST() { 
-
+root=nullptr;
 }
 
 // destructor deletes all nodes
 IntBST::~IntBST() {
-
+clear(root);
 }
 
 // recursive helper for destructor
 void IntBST::clear(Node *n) {
-
+if (!n)
+    return;
+clear(n->left);
+clear(n->right);
+delete n;
 }
 
 // insert value in tree; return false if duplicate
