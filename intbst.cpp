@@ -33,6 +33,16 @@ bool IntBST::insert(int value) {
 
 // recursive helper for insert (assumes n is never 0)
 bool IntBST::insert(int value, Node *n) {
+    if(value==n->info){
+         return false;
+    if(value>n->info&&n-right){
+        insert(value,n->right);
+            }
+    if(value<n->info&&n->right){
+        insert(value,n->left)
+             }
+    if(value>n->info&&!n->right){
+        
     return false; // REPLACE THIS NON-SOLUTION
 }
 
