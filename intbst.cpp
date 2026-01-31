@@ -37,50 +37,46 @@ bool IntBST::insert(int value) {
 
 // recursive helper for insert (assumes n is never 0)
 bool IntBST::insert(int value, Node *n) {
-    if (value == n->info) return false;
-
-    if (value < n->info) {
-        if (!n->left) {
-            n->left = new Node(value);
-            n->left->parent = n;
+    if (n -> info > value) {
+        if (n -> left == nullptr) {
+            n -> left = new Node(value);
+            n -> left -> parent = n;
             return true;
+        } else {
+            return insert(value, n -> left);
         }
-        return insert(value, n->left);
-    } else { // value > n->info
-        if (!n->right) {
-            n->right = new Node(value);
-            n->right->parent = n;
+    } else if (n -> info < value) {
+        if (n -> right == nullptr) {
+            n -> right = new Node(value);
+            n -> right -> parent = n;
             return true;
+        } else {
+            return insert(value, n -> right);
         }
-        return insert(value, n->right);
+    } else {
+        return false;
+    }
     }
 }
 // print tree data pre-order
 
 void IntBST::printPreOrder() const {
-    static bool first;
-    first = true;
     printPreOrder(root);
-    cout << endl;
 }
 
 void IntBST::printPreOrder(Node* n) const {
-    if (!n) return;
 
-    if (!first) cout << " ";
-    cout << n->info;
-    first = false;
-
-    printPreOrder(n->left);
-    printPreOrder(n->right);
+    if (n == nullptr) {
+        return;
+    }
+    cout << n -> info << " ";
+    printPreOrder(n -> left);
+    printPreOrder(n -> right);
 }
 
 // print tree data in-order, with helper
 void IntBST::printInOrder() const {
-    static bool first;
-    first = true;
-    printInOrder(root);
-    cout << endl;
+   printInOrder(root);
 }
 
 void IntBST::printInOrder(Node* n) const {
@@ -97,22 +93,16 @@ void IntBST::printInOrder(Node* n) const {
 
 // prints tree data post-order, with helper
 void IntBST::printPostOrder() const {
-void IntBST::printPostOrder() const {
-    static bool first;
-    first = true;
     printPostOrder(root);
-    cout << endl;
 }
 
 void IntBST::printPostOrder(Node* n) const {
-    if (!n) return;
-
-    printPostOrder(n->left);
-    printPostOrder(n->right);
-
-    if (!first) cout << " ";
-    cout << n->info;
-    first = false;
+     if (n == nullptr) {
+        return;
+    }
+    printPostOrder(n -> left);
+    printPostOrder(n -> right);
+    cout << n -> info << " ";
 }
 // return sum of values in tree
 int IntBST::sum() const {
