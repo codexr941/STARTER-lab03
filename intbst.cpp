@@ -205,12 +205,12 @@ bool IntBST::remove(int value){
   Node* cur = getNodeFor(value, root);
     if (!cur) return false;
 
-    // 情况 3：两个孩子
     if (cur->left && cur->right) {
-        Node* s = getSuccessorNode(value);
-        cur->info = s->info;   
-        cur = s;              
-    }
+    Node* s = cur->right;
+    while (s->left) s = s->left;
+    cur->info = s->info;
+    cur = s; 
+}
     Node* child = cur->left ? cur->left : cur->right;
 
     if (child)
