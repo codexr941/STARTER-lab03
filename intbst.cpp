@@ -28,7 +28,7 @@ delete n;
 
 // insert value in tree; return false if duplicate
 bool IntBST::insert(int value) {
-    f (!root) {
+    if (!root) {
         root = new Node(value);
         return true;
     }
