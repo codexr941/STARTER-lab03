@@ -28,10 +28,11 @@ delete n;
 
 // insert value in tree; return false if duplicate
 bool IntBST::insert(int value) {
-    if(root==nullptr){
-        root=new Node(value)
-            }
-    return insert(value,root);
+    f (!root) {
+        root = new Node(value);
+        return true;
+    }
+    return insert(value, root);
 }
 
 // recursive helper for insert (assumes n is never 0)
@@ -54,7 +55,7 @@ bool IntBST::insert(int value, Node *n) {
         return insert(value, n->right);
     }
 }
-
+}
 // print tree data pre-order
 void IntBST::printPreOrder() const {
     printPreOrder(root);
@@ -64,7 +65,7 @@ void IntBST::printPreOrder() const {
 void IntBST::printPreOrder(Node *n) const {
    if (n==nullptr){
        return;}
-   cout << n->info << endl << " ";
+   cout << n->info << " ";
    printPreOrder(n->left);
    printPreOrder(n->right);
 }
@@ -78,7 +79,7 @@ void IntBST::printInOrder(Node *n) const {
     if (n==nullptr){
        return;}
    printInOrder(n->left);
-   cout << n->info << endl << " ";
+   cout << n->info << " ";
    printInOrder(n->right);
 }
 
@@ -92,7 +93,7 @@ void IntBST::printPostOrder(Node *n) const {
        return;}
    printPostOrder(n->left);
    printPostOrder(n->right);
-   cout << n->info << endl << " ";
+   cout << n->info << " ";
 }
 
 // return sum of values in tree
@@ -110,7 +111,7 @@ int IntBST::sum(Node *n) const {
 
 // return count of values
 int IntBST::count() const {
-    return -1; // REPLACE THIS NON-SOLUTION
+    return count(root);
 }
 
 // recursive helper for count
