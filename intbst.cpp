@@ -57,7 +57,7 @@ bool IntBST::insert(int value, Node *n) {
         return false;
     }
     }
-}
+
 // print tree data pre-order
 
 void IntBST::printPreOrder() const {
