@@ -56,7 +56,7 @@ bool IntBST::insert(int value, Node *n) {
     }
 }
 // print tree data pre-order
-void IntBST::printPreOrder() const {
+
 void IntBST::printPreOrder() const {
     static bool first;
     first = true;
