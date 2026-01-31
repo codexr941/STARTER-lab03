@@ -80,15 +80,12 @@ void IntBST::printInOrder() const {
 }
 
 void IntBST::printInOrder(Node* n) const {
-    if (!n) return;
-
-    printInOrder(n->left);
-
-    if (!first) cout << " ";
-    cout << n->info;
-    first = false;
-
-    printInOrder(n->right);
+    if (n == nullptr) {
+        return;
+    }
+    printInOrder(n -> left);
+    cout << n -> info << " ";
+    printInOrder(n -> right);
 }
 
 // prints tree data post-order, with helper
